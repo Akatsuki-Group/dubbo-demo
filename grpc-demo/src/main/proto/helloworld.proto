@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package com.zhouyu;
+
+option java_multiple_files = true;
+option java_package = "com.zhouyu";
+option java_outer_classname = "UserServiceProto";
+
+service UserService {
+  rpc GetUser (UserRequest) returns (User) {}
+  rpc ServerGetUser (UserRequest) returns (stream User) {}
+  rpc ClientGetUser (stream UserRequest) returns (User) {}
+  rpc BiGetUser (stream UserRequest) returns (stream User) {}
+}
+
+// The response message containing the greetings
+message UserRequest {
+  string uid = 1;
+}
+
+// The response message containing the greetings
+message User {
+  string uid = 1;
+  string username = 2;
+}
